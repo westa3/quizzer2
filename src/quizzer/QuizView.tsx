@@ -10,7 +10,11 @@ export const QuizView = ({
     editQuiz,
     deleteQuiz,
     resetView
-}: {}) => {
+}: {quiz: Quiz,
+    editQuiz: (qId: number, newQuiz: Quiz) => void,
+    deleteQuiz: (qId: number) => void,
+    resetView: () => void    
+}) => {
     const [edit, setEdit] = useState(false);
 
     const switchEdit = () => {
@@ -19,23 +23,23 @@ export const QuizView = ({
 
     return (
         <div className="quiz_card">
-            {edit && (
+            edit && (
                 <QuizEdit
-                    quiz={quiz
-                    editQuiz={editQuiz
-                    deleteQuiz={deleteQuiz
-                    switchEdit={switchEdit
-                    resetView={resetView
+                    quiz={quiz}
+                    editQuiz={editQuiz}
+                    deleteQuiz={deleteQuiz}
+                    switchEdit={switchEdit}
+                    resetView={resetView}
                 ></QuizEdit>
             )
-            {!edit && (
+            !edit && (
                 <QuizExpanded
-                    quiz={quiz
-                    editQuiz={editQuiz
-                    resetView={resetView
-                    switchEdit={switchEdit
+                    quiz={quiz}
+                    editQuiz={editQuiz}
+                    resetView={resetView}
+                    switchEdit={switchEdit}
                 ></QuizExpanded>
             )
         </div>
     );
-;
+};
